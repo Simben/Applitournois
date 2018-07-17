@@ -101,9 +101,13 @@ namespace ApliTournoi
             temp._ID = Teams.Count + 1;
             temp._Nom = TB_Nom.Text;
             temp._Region = TB_region.Text;
+            temp._Pts_Doublette = Convert.ToInt32((TB_PD.Text == "") ? "0" : TB_PD.Text);
+            temp._Pts_Peinture = (float)Convert.ToDouble((TB_PPaint.Text == "") ? "0" : TB_PD.Text);
+            temp._Pts_Poutre = Convert.ToInt32((TB_PP.Text == "") ? "0" : TB_PD.Text);
 
 
-            Random rnd = new Random();
+
+            /*Random rnd = new Random();
             for (int i = 0; i < 26; i++)
             {
                 Teams[i] = new Team();
@@ -112,7 +116,10 @@ namespace ApliTournoi
                 Teams[i]._Pts_Doublette = rnd.Next(0, 2000);
                 Teams[i]._Region = ((ApliTournoi.REGION)(i % 6)).ToString();
 
-            }
+            }*/
+
+            this.Teams.Add(temp);
+            Refresh();
         }
         private int _MaxPD = 0;
 
@@ -136,10 +143,10 @@ namespace ApliTournoi
                 temp[1] = t._Nom;
                 temp[2] = t._Region;
                 temp[3] = t._Pts_Doublette.ToString();
-                temp[4] = (t._Pts_Doublette / (float)_MaxPD).ToString("0.000");
+                temp[4] = (t._Pts_Doublette / (float)_MaxPD).ToString("0.00");
                 temp[5] = t._Pts_Poutre.ToString();
                 temp[6] = t._Pts_Peinture.ToString();
-                temp[7] = (t._Pts_Poutre + (t._Pts_Doublette / (float)_MaxPD)).ToString();
+                temp[7] = (t._Pts_Poutre + (t._Pts_Doublette / (float)_MaxPD)).ToString("0.00");
 
                 ListViewItem c = new ListViewItem(temp);
                 this.listView1.Items.Add(c);
@@ -148,6 +155,38 @@ namespace ApliTournoi
         private void button3_Click(object sender, EventArgs e)
         {
             Refresh();            
+        }
+        private int Selected_Index = 0;
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.listView1.SelectedItems.Count != 1)
+                return;
+
+            Selected_Index = Convert.ToInt32(this.listView1.SelectedItems[0].Text);
+
+
+            TB_Nom.Text = Teams[Selected_Index - 1]._Nom;
+            TB_region.Text = Teams[Selected_Index - 1]._Region;
+            TB_PD.Text = Teams[Selected_Index - 1]._Pts_Doublette.ToString();
+            TB_PPaint.Text = Teams[Selected_Index - 1]._Pts_Peinture.ToString("0.00");
+            TB_PP.Text = Teams[Selected_Index - 1]._Pts_Poutre.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.Selected_Index == -1) return;
+
+
+
+            this.Teams[Selected_Index - 1]._Nom = TB_Nom.Text;
+            this.Teams[Selected_Index - 1]._Region = TB_region.Text;
+            this.Teams[Selected_Index - 1]._Pts_Doublette = Convert.ToInt32((TB_PD.Text == "") ? "0" : TB_PD.Text);
+            this.Teams[Selected_Index - 1]._Pts_Peinture = (float)Convert.ToDouble((TB_PPaint.Text == "") ? "0" : TB_PD.Text);
+            this.Teams[Selected_Index - 1]._Pts_Poutre = Convert.ToInt32((TB_PP.Text == "") ? "0" : TB_PD.Text);
+
+
+            Refresh();
+            this.Selected_Index = -1;
         }
     }
 }

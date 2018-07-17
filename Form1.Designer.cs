@@ -80,6 +80,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Edit team";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // TB_Nom
             // 
@@ -180,6 +181,7 @@
             this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // ID
             // 
