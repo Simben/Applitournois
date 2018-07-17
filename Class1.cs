@@ -42,10 +42,10 @@ namespace ApliTournoi
         }
     };
 
-    public class Ronde
+    /*public class Ronde
     {
         public List<Pairing> Pair = new List<Pairing>();
-    }
+    }*/
 
     public class Pairing
     {
