@@ -154,7 +154,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(480, 369);
+            this.textBox1.Location = new System.Drawing.Point(579, 370);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(329, 149);
@@ -171,13 +171,15 @@
             this.Pts_Pou,
             this.Pts_Paint,
             this.Pts_Tot});
+            this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(12, 94);
+            this.listView1.LabelEdit = true;
+            this.listView1.Location = new System.Drawing.Point(12, 143);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(359, 344);
+            this.listView1.Size = new System.Drawing.Size(540, 295);
             this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // ID
             // 
